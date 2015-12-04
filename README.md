@@ -1,3 +1,2 @@
-# CaisseASavon
-
-a [Sails](http://sailsjs.org) application
+# server
+Web server (sails)
