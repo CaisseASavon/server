@@ -1,11 +1,8 @@
-// api/models/Geolocation
+// api/models/User
 module.exports = {
-    connection:  [ 'rabbitCluster', 'mongoServer'],
-    routingKey: [ 'geolocation' ],
+    connection:  [ /*'rabbitCluster',*/ 'mongoServer'],
+   // routingKey: [ 'geolocation' ],
     attributes: {
-        deviceid: {
-            type: 'integer'
-        },
         type:{
             type: 'string',
             enum: ['driver','technician'],
@@ -13,6 +10,10 @@ module.exports = {
         },
         location:{
             type:'array'
+        },
+        status:{
+            type:'boolean',
+            defaultsTo: false,
         }
     }
 }

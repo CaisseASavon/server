@@ -36,7 +36,12 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  'GET /test' : 'GeolocationController.test',
+  'GET /drivers' : 'UserController.drivers',
+  'GET /technicians' : 'UserController.technicians',
+
+  'PUT /drivers/:id/position' : 'UserController.updatePosition',
+  'PUT /technicians/:id/position' : 'UserController.updatePosition',
+  'PUT /drivers/:id/status' : 'UserController.updateStatus'
 
   /***************************************************************************
   *                                                                          *
