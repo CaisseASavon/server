@@ -1,16 +1,6 @@
 var rabbitmq = require('sails-rabbitmq');
 function UserController() {
     return {
-        /*test: function (req, res) {
-            var geolocation = Geolocation.create({deviceid: 1, type: 'driver', location: [10,11,12]}).exec(function(err, geolocation) {
-               console.log(geolocation);
-
-               rabbitmq.create(geolocation, function() {
-                    console.log("coucou");
-               });
-
-            } );
-        },*/
 
         drivers: function(req, res) {
             User.find({type:'driver'}).exec(function(err, found) {
@@ -25,9 +15,7 @@ function UserController() {
         },
 
         updatePosition: function(req, res) {
-            console.log('location= '+req.param('location'));
             User.update({id: req.param('id')}, {location: req.param('location')}).exec(function(err, updated) {
-                console.log(err);
                 return res.json(null);
             });
         },
@@ -36,6 +24,9 @@ function UserController() {
             var that = this;
             User.update({id: req.param('id')}, {status: req.param('status')}).exec(function(err, updated) {
                 if(req.param('status')) {
+                  User.update({id: req.param('id')}, {location: req.param('location')}).exec(function(err, updated) {
+                      return;
+                  });
                   that.findClosestTechnician(req, res);
                 } else {
                   return res.json(null);

@@ -1,7 +1,7 @@
 // api/models/User
 module.exports = {
-    connection:  [ /*'rabbitCluster',*/ 'mongoServer'],
-   // routingKey: [ 'geolocation' ],
+    connection:  [ 'rabbitCluster', 'mongoServer'],
+    routingKey: [ 'user' ],
     attributes: {
         type:{
             type: 'string',
@@ -14,6 +14,13 @@ module.exports = {
         status:{
             type:'boolean',
             defaultsTo: false,
-        }
+        },
+        lastname:{
+            type:'string'
+        },
+        firstname:{
+            type:'string'
+        },
+
     }
 }
